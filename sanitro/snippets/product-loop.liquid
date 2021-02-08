@@ -1,0 +1,85 @@
+{% assign main_image =  product.featured_image %}
+
+
+{% assign on_sale = false %}
+{% if product.available and product.compare_at_price > product.price %}
+  {% assign on_sale = true %}
+{% endif %}
+
+{% assign sold_out = true %}
+{% if product.available  %}
+  {% assign sold_out = false %}
+{% endif %}
+
+{% assign max_img_width = main_image.width | append: "px" %}
+
+
+{% if settings.align_height %}
+  {% assign max_img_height = settings.collection_height %}
+  {% assign product_img_width = main_image.width %}
+  {% assign product_img_height = main_image.height %}
+  {% assign product_img_ratio = main_image.aspect_ratio %}
+		{% if max_img_height < product_img_height %}
+		{% assign max_img_width = max_img_height | times: product_img_ratio | append:"px"%}
+        {% else %}
+		{% assign max_img_width = product_img_height | times: product_img_ratio | append:"px"%}
+		{% endif %}
+{% endif %}
+
+
+<div class="main_box{% if section.settings.collection_overlay %} quick-view-overlay {% endif %}">
+  <div class="box_1">
+    {% if on_sale and section.settings.show_sale_badge %}
+    <div class="on-sale">{{ 'products.product.sale' | t }}</div>
+    {% endif %}
+    {% if sold_out %}
+    <div class="sold-out">{{ 'products.product.sold_out' | t }}</div>
+    {% endif %}
+    <div class="product-image">
+
+      <a href="{{ product.url | within: collection }}">
+        <noscript>
+        <img  src="{{ main_image.src | product_img_url: "300x"}}" srcset="{{ main_image.src | product_img_url: img_size}} 1x, {{ main_image.src | product_img_url: img_size, scale: 2}} 2x, {{ main_image.src | product_img_url: img_size, scale: 3}} 3x" alt="{{ main_image.alt | escape }}">
+        </noscript>
+        <img class="lazyload"
+             src="{{ main_image.src | product_img_url: "300x"}}"
+             data-srcset="{{ main_image.src | product_img_url: img_size}} 1x, {{ main_image.src | product_img_url: img_size, scale: 2}} 2x, {{ main_image.src | product_img_url: img_size, scale: 3}} 3x"
+             alt="{{ main_image.alt | escape }}"
+ 			 style="{% if max_img_width == '0px' %} width: auto; {% else %} max-width: {{max_img_width}} {% endif %}"/>
+
+         <div class="spinner-cube">
+           <div class="loadFacebookG"></div>
+        </div>
+
+      </a>
+    </div>
+    {% if section.settings.collection_overlay %}
+      <div class="overlay hidden-sm hidden-xs">
+        {% render 'product-quick-view-btn' qvp:product %}
+      </div>
+    {% endif %}
+  </div>
+  <div class="desc">
+    <h5><a href="{{ product.url | within: collection }}">{{ product.title | escape }}</a></h5>
+    {% if section.settings.show_grid_type %}
+    <p>{{ product.type }}</p>
+    {% endif %}
+    	<div class="price">
+         {% unless product.price_max == 0 and settings.custom_price0_text != blank %}
+          {% if product.price_varies %}{{ 'products.product.price_from' | t }}{% endif %}
+          <span class="money">{{ product.price | money }}</span>
+          {% if on_sale %}<span class="compare-price money">{{ product.compare_at_price | money }}</span>{% endif %}
+  		 {% else %}
+          <span>{{settings.custom_price0_text }}</span>
+        {% endunless %}
+        <div class="price-unit">
+          {% render 'unit-price', variant: product.selected_or_first_available_variant %}
+        </div>
+          </div>
+    {% if section.settings.show_product_reviews_stars %}
+    	 <span class="shopify-product-reviews-badge min_height_22" data-id="{{ product.id }}"></span>
+         <div class="clearfix"></div>
+
+    {% endif %}
+  </div>
+</div>

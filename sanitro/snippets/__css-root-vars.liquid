@@ -1,0 +1,79 @@
+{%- assign font_body_bold = settings.base_font_value | font_modify: 'weight', 'bolder' -%}
+{%- assign font_body_italic = settings.base_font_value | font_modify: 'style', 'italic' -%}
+
+
+<style>
+  {{ settings.base_font_value | font_face }}
+  {{ settings.header_font_value | font_face }}
+  {{ font_body_bold | font_face }}
+  {{ font_body_italic | font_face }}
+  :root {
+    {% render '__hsl-color-extract', name: 'promo-bar-bg-color', color: settings.promo_bar_bg_color %}
+    {% render '__hsl-color-extract', name: 'promo-bar-text-color', color: settings.promo_bar_text_color %}
+    {% render '__hsl-color-extract', name: 'header-bg-color', color: settings.header_bg_color %}
+    {% render '__hsl-color-extract', name: 'header-logo-color', color: settings.header_logo_color %}
+    {% render '__hsl-color-extract', name: 'header-text-color', color: settings.header_text_color %}
+    {% render '__hsl-color-extract', name: 'header-top-link-color', color: settings.header_top_link_color %}
+    {% render '__hsl-color-extract', name: 'header-border-color', color: settings.header_border_color %}
+    {% render '__hsl-color-extract', name: 'nav-bg-color', color: settings.nav_bg_color %}
+    {% render '__hsl-color-extract', name: 'nav-mobile-bg-color', color: settings.nav_bg_color_mobile %}
+    {% render '__hsl-color-extract', name: 'nav-text-color', color: settings.nav_text_color %}
+    {% render '__hsl-color-extract', name: 'nav-hover-color', color: settings.nav_parent_hover %}
+    {% render '__hsl-color-extract', name: 'primary-color', color: settings.primary_color %}
+    {% render '__hsl-color-extract', name: 'secondary-color', color: settings.secondary_color %}
+    {% render '__hsl-color-extract', name: 'heading-text-color', color: settings.heading_text_color %}
+    {% render '__hsl-color-extract', name: 'body-text-color', color: settings.body_text_color %}
+    {% render '__hsl-color-extract', name: 'link-hover-color', color: settings.link_hover_color %}
+    {% render '__hsl-color-extract', name: 'button-text-color', color: settings.button_text_color %}
+    {% render '__hsl-color-extract', name: 'regular-price-color', color: settings.regular_price_color %}
+    {% render '__hsl-color-extract', name: 'compare-price-color', color: settings.compare_price_color %}
+    {% render '__hsl-color-extract', name: 'body-bg-color', color: settings.body_background_color %}
+    {% render '__hsl-color-extract', name: 'content-heading-color', color: settings.content_heading_color %}
+    {% render '__hsl-color-extract', name: 'content-text-color', color: settings.content_text_color %}
+    {% render '__hsl-color-extract', name: 'content-link-color', color: settings.content_link_color %}
+    {% render '__hsl-color-extract', name: 'footer-bg-color', color: settings.footer_bg_color %}
+    {% render '__hsl-color-extract', name: 'footer-heading-color', color: settings.footer_heading_color %}
+    {% render '__hsl-color-extract', name: 'footer-text-color', color: settings.footer_text_color %}
+    {% render '__hsl-color-extract', name: 'footer-link-color', color: settings.footer_link_color %}
+    {% render '__hsl-color-extract', name: 'footer-border-color', color: settings.footer_border_color %}
+    {% render '__hsl-color-extract', name: 'footer-social-color', color: settings.footer_social_color %}
+    --body-font: {{ settings.base_font_value.family }}, {{ settings.base_font_value.fallback_families }};
+    --body-font-style: {{ settings.base_font_value.style }};
+    --body-text-weight: {{ settings.base_font_value.weight }};
+    --body-text-size: {{ settings.body_text_size | append: 'px' }};
+    --body-text-bolder: {{ font_body_bold.weight }};
+    --heading-font: {{ settings.header_font_value.family }}, {{ settings.header_font_value.fallback_families }};
+    --heading-font-style: {{ settings.header_font_value.style }};
+    --heading-font-weight: {{ settings.header_font_value.weight }};
+    --nav-text-weight: {{ settings.nav_text_weight }};
+    --nav-text-transform: {{ settings.nav_text_transform }};
+    --nav-text-size: {{ settings.nav_text_size | append: 'px' }};
+    --nav-header-text-size: {{ settings.nav_header_size | append: 'px' }};
+    --nav-link-text-size: {{ settings.nav_link_size | append: 'px' }};
+    --h1-text-size: {{ settings.header_size_1 | append: 'px' }};
+    --h2-text-size: {{ settings.header_size_2 | append: 'px' }};
+    --h3-text-size: {{ settings.header_size_3 | append: 'px' }};
+    --product-image-height: {{ settings.collection_height | append: 'px' }};
+    --product-image-max-height: {{ setting.images_limit_height | append: 'px' }};
+    --popup-heading-text-size: {{ setting.popup_heading_size | append: 'px' }};
+    --popup-text-size: {{ settings.popup_text_size | append: 'px' }};
+    --select-icon-svg-path: {{ "ico-select.svg" | asset_url }};
+    --bg-repeat: {{ settings.bg_repeat }};
+
+    --home-cta-text-color: {{ settings.home_cta_txt_color }};
+    --home-cta-text-size: {{ settings.home_cta_content_size | append: 'px' }};
+
+    --home-newsletter-text-color: {{ settings.home_newsletter_txt_color }};
+    --home-newsletter-text-size: {{ settings.home_newsletter_content_size | append: 'px' }};
+
+    --home-video-play-icon-color: {{ settings.home_video_play_icon_color }};
+
+    --pwd-bg-image: {{ 'password-bg.jpg' | asset_url }};
+
+    --hf-social-color: {{ settings.hf_social_color }};
+    {% comment %}
+      quick gift card vars injection
+    {% endcomment %}
+    --primary-color-d-5: {{ settings.primary_color | color_darken: 5 }}
+  }
+</style>

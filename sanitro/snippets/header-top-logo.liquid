@@ -1,0 +1,42 @@
+<div class="header_top">
+  <div class="container">
+    <div class="top_menu hidden-ms hidden-xs">
+      {% if section.settings.logo != blank %}
+      <a class="navbar-brand" href="{{routes.root_url}}" style="max-width:{{section.settings.logo_max_width | plus: 15  | append: "px"}}">
+        <img src="{{ section.settings.logo | img_url: logo_scale_width }}"
+             alt="{% if  section.settings.logo.alt != blank %} {{ section.settings.logo.alt}} {% else %}{{ shop.name }} {%endif %}"
+             class="img-responsive"  />
+      </a>
+      {% else %}
+        <a class="navbar-brand text-logo" href="{{routes.root_url}}">{{ shop.name }}</a>
+      {% endif %}
+    </div>
+    <div class="hed_right">
+      {% if section.settings.heading_content != 'none'%}
+      <ul>
+        {% if section.settings.heading_content == 'links' %}
+        {% for link in linklists[section.settings.header_top_linklist].links %}
+        <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
+        {% else %}
+        <li>{{ 'general.header.no_links' | t }}</li>
+        {% endfor %}
+        {% elsif section.settings.heading_content == 'text' and section.settings.header_top_text != blank %}
+        <li><span class="header-top-text">{{ section.settings.header_top_text }}</span></li>
+        {% endif %}
+      </ul>
+      {% endif %}
+      {% if section.settings.header_phone != blank or section.settings.header_email != blank %}
+      <div class="header-contact">
+        <ul>
+          {% if section.settings.header_phone != blank %}
+          <li><a href="tel:{{ section.settings.header_phone | escape }}"><span class="fa fa-phone"></span>{{ section.settings.header_phone | escape }}</a></li>
+          {% endif %}
+          {% if section.settings.header_email != blank %}
+          <li><a href="mailto:{{ section.settings.header_email | escape }}"><span class="fa fa-envelope"></span>{{ section.settings.header_email | escape }}</a></li>
+          {% endif %}
+        </ul>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
