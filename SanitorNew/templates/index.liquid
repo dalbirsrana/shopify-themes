@@ -1,0 +1,10 @@
+{% comment %}
+{% if settings.use_slider and settings.slideshow_width == 'full' %}
+{% render 'home-slider' %}
+{% endif %}
+{% endcomment %}
+
+
+<div id="content">
+{{ content_for_index }}
+</div>

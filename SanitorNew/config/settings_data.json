@@ -6,25 +6,25 @@
     "header_logo_color": "#282727",
     "header_text_color": "#494949",
     "header_top_link_color": "#494949",
-    "header_border_color": "rgba(0,0,0,0)",
+    "header_border_color": "#ecefef",
     "nav_bg_color": "#ffffff",
     "nav_bg_color_mobile": "#ffffff",
     "nav_text_color": "#282727",
     "nav_parent_hover": "#107fa8",
-    "primary_color": "#c105c6",
+    "primary_color": "#c71bcc",
     "secondary_color": "#347a97",
-    "heading_text_color": "#282727",
+    "heading_text_color": "#4f4055",
     "body_text_color": "#494949",
     "link_hover_color": "#347a97",
     "button_text_color": "#ffffff",
     "regular_price_color": "#282827",
-    "compare_price_color": "#cccccc",
+    "compare_price_color": "#9e9e9e",
     "body_background_color": "#ffffff",
     "show_bg_image": false,
     "bg_repeat": "no-repeat",
     "bg_fixed": false,
     "bg_stretched": false,
-    "content_heading_color": "#282827",
+    "content_heading_color": "#461962",
     "content_text_color": "#494949",
     "content_link_color": "#107fa8",
     "footer_bg_color": "#ffffff",
@@ -33,19 +33,19 @@
     "footer_link_color": "#107fa8",
     "footer_border_color": "#ecefef",
     "footer_social_color": "#298cb7",
-    "base_font_value": "lato_n4",
-    "body_text_size": 14,
-    "header_font_value": "lato_n4",
-    "nav_text_weight": "900",
+    "base_font_value": "poppins_n4",
+    "body_text_size": 16,
+    "header_font_value": "montserrat_n4",
+    "nav_text_weight": "600",
     "nav_text_transform": "uppercase",
-    "nav_text_size": 14,
+    "nav_text_size": 16,
     "nav_header_size": 16,
-    "nav_link_size": 13,
-    "header_size_1": 20,
-    "header_size_2": 18,
-    "header_size_3": 17,
-    "cart_type": "modal",
-    "enable_terms_and_conditions": false,
+    "nav_link_size": 16,
+    "header_size_1": 28,
+    "header_size_2": 24,
+    "header_size_3": 20,
+    "cart_type": "page",
+    "enable_terms_and_conditions": true,
     "terms_and_conditions_text": "<p>Agree with terms&nbsp;and conditions.<\/p>",
     "limit_purchase_quantities": false,
     "cart_notes": true,
@@ -61,8 +61,8 @@
     "custom_price0_text": "Free",
     "hide_price0_box_and_button": true,
     "align_height": true,
-    "collection_height": 400,
-    "show_product_swatches": true,
+    "collection_height": 200,
+    "show_product_swatches": false,
     "show_smart_checkout": true,
     "product_reviews": false,
     "show_product_zoom": false,
@@ -456,24 +456,24 @@
         "type": "header",
         "settings": {
           "show_announcement": true,
-          "promo_bar_text": "Test Announcement",
-          "head_promobar": 14,
+          "promo_bar_text": "UV Sanitizing Products for Home, Work & Travel",
+          "head_promobar": 16,
           "header_style": "header1",
           "logo": "shopify:\/\/shop_images\/sanitro-logo_220x64_753dc756-4e84-4a1e-afac-7190fbd847b1.png",
-          "logo_max_width": 180,
+          "logo_max_width": 200,
           "logo_height": 30,
-          "mobile_padding": 10,
+          "mobile_padding": 25,
           "search_style": "icon",
           "show_search_bar_mobile": true,
           "navigation_type": "advanced",
-          "header_main_linklist": "",
+          "header_main_linklist": "main-menu",
           "sticky_menu": true,
           "heading_content": "text",
           "head_font_size": 14,
-          "header_top_linklist": "main-menu",
+          "header_top_linklist": "",
           "header_top_text": "",
-          "header_phone": "800.555.5555",
-          "header_email": "example@cooktime.com"
+          "header_phone": "800.555.0011",
+          "header_email": "service@sanitro.com"
         }
       },
       "footer": {
@@ -523,14 +523,14 @@
         "settings": {
           "product_grid_layout": 3,
           "pagination_limit": 12,
-          "use_infinite_scroll": false,
+          "use_infinite_scroll": true,
           "show_featured_image": true,
-          "show_grid_type": false,
+          "show_grid_type": true,
           "show_sale_badge": true,
           "collection_overlay": false,
-          "show_product_reviews_stars": false,
+          "show_product_reviews_stars": true,
           "show_collection_sidebar": false,
-          "collection_sidebar_filters": "simple-tags",
+          "collection_sidebar_filters": "none",
           "group_array": "",
           "collection_link_list": "",
           "show_sidebar_collections": false,
@@ -575,13 +575,14 @@
         ],
         "settings": {
           "title": "Collection list",
-          "home_feature_collection_grid_layout": "3-col",
+          "home_feature_collection_grid_layout": "4-col",
           "featured_collection_images": "featured",
           "show_item_count": false
         }
       },
       "blog-posts": {
         "type": "blog-posts",
+        "disabled": true,
         "settings": {
           "title": "From the Blog",
           "recent-post-blog": "",
@@ -591,7 +592,6 @@
       },
       "video": {
         "type": "video",
-        "disabled": true,
         "settings": {
           "video_link": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
           "video_width": "full",
@@ -611,6 +611,7 @@
       },
       "page-content": {
         "type": "page-content",
+        "disabled": true,
         "settings": {
           "page_title": "",
           "show_page_title": false
@@ -618,6 +619,7 @@
       },
       "slideshow": {
         "type": "slideshow",
+        "disabled": true,
         "blocks": {
           "slideshow-0": {
             "type": "slide",
@@ -673,22 +675,22 @@
       "product": {
         "type": "product",
         "settings": {
-          "show_product_cart_postion": "top",
+          "show_product_cart_postion": "bottom",
           "show_smart_checkout": true,
           "enable_description_enhancements": true,
           "product_reviews": true,
-          "show_product_swatches": true,
+          "show_product_swatches": false,
           "show_product_sku": true,
-          "show_product_vendor": false,
-          "show_product_quantity": false,
+          "show_product_vendor": true,
+          "show_product_quantity": true,
           "show_product_tags": true,
           "show_product_zoom": true,
-          "product_additional_img": "carousel",
+          "product_additional_img": "grid",
           "enable_images_limit": false,
-          "images_limit_height": 600,
+          "images_limit_height": 500,
           "enable_video_looping": false,
           "show_product_tab_1": false,
-          "tab_1_title": "Reviews",
+          "tab_1_title": "reviews",
           "product_tab_1_page": "",
           "show_product_tab_2": false,
           "tab_2_title": "TAB 2",
@@ -716,33 +718,48 @@
           "ctab_border_color": "#ecefef"
         }
       },
-      "1612685279e4a24606": {
-        "type": "hero-image",
-        "settings": {
-          "image": "shopify:\/\/shop_images\/hero-banner.jpg",
-          "alignment": "center",
-          "hero_layout": "full_width",
-          "hero_size": "medium",
-          "text_size": "large",
-          "title": "GO GERM-FREE",
-          "text": "",
-          "button_label": ""
-        }
-      },
       "product-recommendations": {
         "type": "product-recommendations",
         "settings": {
           "show_product_recommendations": true,
           "related_products_title": "Related products",
-          "show_sale_badge": false,
+          "show_sale_badge": true,
           "collection_overlay": false,
+          "show_product_reviews_stars": false
+        }
+      },
+      "1613099380c972a553": {
+        "type": "hero-image",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/hero-banner.jpg",
+          "alignment": "center",
+          "hero_layout": "fixed_width",
+          "hero_size": "adapt",
+          "text_size": "medium",
+          "title": "Image with text overlay",
+          "text": "",
+          "button_label": ""
+        }
+      },
+      "161325659101e6b3c8": {
+        "type": "featured-collection",
+        "settings": {
+          "title": "Featured collection",
+          "featured_collection": "air-sanitizers",
+          "home_feature_product_grid_type": "grid",
+          "home_feature_product_grid_layout": "col-lg-4 col-md-4",
+          "home_feature_product_limit": 12,
+          "show_grid_type": true,
+          "show_sale_badge": true,
+          "collection_overlay": true,
           "show_product_reviews_stars": true
         }
       }
     },
     "content_for_index": [
-      "1612685279e4a24606",
+      "1613099380c972a553",
       "featured-collections",
+      "161325659101e6b3c8",
       "blog-posts",
       "video",
       "page-content"

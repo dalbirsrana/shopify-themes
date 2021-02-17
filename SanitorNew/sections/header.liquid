@@ -1,28 +1,27 @@
 <div class="promo-bar">
-
-{% if section.settings.show_announcement != blank and section.settings.promo_bar_text != blank %}
-  <div class="promo-bar-text">
-    {% if section.settings.promo_bar_link != blank %}
-    <a href="{{section.settings.promo_bar_link}}">
-    {% endif %}
-  	{{ section.settings.promo_bar_text }}
-    {% if section.settings.promo_bar_link != blank %}
-    </a>
-    {% endif %}
-  </div>
-{% endif %}
-
-  <div class="promo-bar-phone">
-    <ul>
-      {% if section.settings.header_phone != blank %}
-      <li><a href="tel:{{ section.settings.header_phone | escape }}"><span class="fa fa-phone"></span>{{ section.settings.header_phone | escape }}</a></li>
+  <div class="container promo-bar-content">
+    {% if section.settings.show_announcement != blank and section.settings.promo_bar_text != blank %}
+    <div class="promo-bar-text">
+      {% if section.settings.promo_bar_link != blank %}
+      <a href="{{section.settings.promo_bar_link}}">
       {% endif %}
-      {% if section.settings.header_email != blank %}
-      <li><a href="mailto:{{ section.settings.header_email | escape }}"><span class="fa fa-envelope"></span>{{ section.settings.header_email | escape }}</a></li>
+      {{ section.settings.promo_bar_text }}
+      {% if section.settings.promo_bar_link != blank %}
+      </a>
       {% endif %}
-    </ul>
+    </div>
+    {% endif %}
+    <div class="promo-bar-phone">
+      <ul>
+        {% if section.settings.header_phone != blank %}
+        <li><a href="tel:{{ section.settings.header_phone | escape }}"><span class="fa fa-phone"></span>{{ section.settings.header_phone | escape }}</a></li>
+        {% endif %}
+        {% if section.settings.header_email != blank %}
+        <li><a href="mailto:{{ section.settings.header_email | escape }}"><span class="fa fa-envelope"></span>{{ section.settings.header_email | escape }}</a></li>
+        {% endif %}
+      </ul>
+    </div>
   </div>
-
 </div>
 
 {% assign logo_scale_width = section.settings.logo_max_width | times: 2 | append: 'x' %}

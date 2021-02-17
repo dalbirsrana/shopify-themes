@@ -1,7 +1,5 @@
 {% assign featured_media = product.selected_or_first_available_variant.featured_media.preview_image | default: product.featured_media.preview_image %}
 
-<h1>product images</h1>
-
 <div class="slider_1 clearfix" data-featured="{{featured_media.id}}" data-image="{{image.id}}">
   {% if product.media.size == 0 %}
   <img src="{{ '' | product_img_url: '1024x' }}" alt="Product Image">
