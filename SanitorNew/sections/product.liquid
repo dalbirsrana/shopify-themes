@@ -52,47 +52,7 @@
 
                 <div class="desc_blk">
                   
-<!--                   <h5>{{ 'products.general.description' | t }}</h5> -->
-                  
-                  
-                  <!-- product variant sku, vendor -->
-
-                  {% if section.settings.show_product_sku or section.settings.show_product_vendor or section.settings.show_product_quantity  %}
-                  <div class="prod_sku_vend">
-                    {% if section.settings.show_product_sku %}
-                    <div class="variant-sku"><strong>{{'products.general.product_sku' | t }}: </strong> {{ product.variants[0].sku }}</div>
-                    {% endif %}
-                    {% if section.settings.show_product_vendor %}
-                    <div class="product-vendor"><strong>{{'products.general.product_vendor' | t }}: </strong> {{ product.vendor | link_to_vendor }}</div>
-                    {% endif %}
-                     {% if section.settings.show_product_quantity %}
-                    <div id="variant-inventory">
-                    </div>
-                    {% endif %}
-                  </div>
-                  {% endif %}
-
-                  <!-- end product variant sku, vendor -->
-                  
-                  <!-- product tags -->
-
-                  {% if section.settings.show_product_tags%}
-                  {% if product.tags.size > 0 %}
-                  <div class="tag_c clearfix product_tags">
-                    {% if product.tags.size > 0 %}
-                    <ul>
-                      <li>
-                        <span><b><span class="fa fa-tags"></span>{{'products.general.product_tags' | t}} :</b></span>
-                        {% for tag in product.tags %}
-                        <a class = "tag" href="{{routes.all_products_collection_url}}/{{ tag | handleize }}">{{ tag }}</a>
-                        {% endfor %}
-                      </li>
-                    </ul>
-                    {% endif %}
-                  </div>
-                  {% endif%}
-
-                  <!-- end product tags -->
+<!--            <h5>{{ 'products.general.description' | t }}</h5> -->
                   
                   
                   
@@ -165,7 +125,7 @@
 
                   <div class="desc_blk_bot clearfix">
                      {% unless product.price_max == 0 and settings.hide_price0_box_and_button %}
-                    <div class="qty product-page-qty"> <a class="minus_btn" ></a>
+                      <div class="qty product-page-qty"> <a class="minus_btn" ></a>
 
                       <input type="text" id="quantity" name="quantity" class="txtbox" value="1" min="1">
                       <a class="plus_btn" ></a>
@@ -314,8 +274,6 @@
                   <!-- bottom variations section end  -->
 
 
-
-                  {% endif %}
                   
                   {% if section.settings.show_product_cart_postion == "bottom" %}
 
@@ -363,6 +321,56 @@
                   {% endif %}
 
                   <!-- bottom cart section end -->
+
+
+                                    <!-- product tags -->
+
+                  {% if section.settings.show_product_tags%}
+
+                  {% if product.tags.size > 0 %}
+                  <div class="tag_c clearfix product_tags">
+                    {% if product.tags.size > 0 %}
+                    <ul>
+                      <li>
+                        <span><strong>Specs:</strong></span>
+                        {% for tag in product.tags %}
+                        <a class = "tag" href="{{routes.all_products_collection_url}}/{{ tag | handleize }}">{{ tag }}</a>
+                        {% endfor %}
+                      </li>
+                    </ul>
+                    {% endif %}
+                  </div>
+                  {% endif%}                
+
+                  {% endif %}
+
+                  <!-- end product tags -->
+
+
+                  <!-- product variant sku, vendor -->
+
+                  {% if section.settings.show_product_sku or section.settings.show_product_vendor or section.settings.show_product_quantity  %}
+                  <div class="prod_sku_vend">
+                    {% if section.settings.show_product_sku %}
+                    <div class="variant-sku"><strong>{{'products.general.product_sku' | t }}: </strong> {{ product.variants[0].sku }}</div>
+                    {% endif %}
+                    {% if section.settings.show_product_vendor %}
+                    <div class="product-vendor"><strong>{{'products.general.product_vendor' | t }}: </strong> {{ product.vendor | link_to_vendor }}</div>
+                    {% endif %}
+                     {% if section.settings.show_product_quantity %}
+                    <div id="variant-inventory">
+                    </div>
+                    {% endif %}
+                  </div>
+                  {% endif %}
+
+                  <!-- end product variant sku, vendor -->
+
+
+
+
+
+
 
                   <div class="review_row clearfix">
                     {% if section.settings.product_reviews %}

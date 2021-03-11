@@ -28,35 +28,29 @@
 
 <div id="header" data-section-id="{{ section.id }}" data-section-type="header-section">
 
-        {% render 'header-top' %}
+  {% comment %} {% render 'header-top' %} {% endcomment %}
 
-        <div class="header_bot {% if section.settings.sticky_menu %} enabled-sticky-menu {% endif %}">
-          <div class="header_content">
-            <div class="container">
+    <div class="header_bot {% if section.settings.sticky_menu %} enabled-sticky-menu {% endif %}">
+      <div class="header_content">
+        <div class="container">
 
-              {% if section.settings.navigation_type == 'simple' %}
-              {% render 'main-menu-simple', logo_scale_width: logo_scale_width %}
-              {% else %}
-              {% render 'main-menu', logo_scale_width: logo_scale_width %}
-              {% endif %}
+          {% if section.settings.navigation_type == 'simple' %}
+            {% render 'main-menu-simple', logo_scale_width: logo_scale_width %}
+          {% else %}
+            {% render 'main-menu', logo_scale_width: logo_scale_width %}
+          {% endif %}
 
-			  {% if section.settings.show_search_bar_mobile %}
-              <div class="visible-mobile-xs mobile-portrait-search">
-                  {% render 'menu-search'%}
-              </div>
-              {% endif %}
-            </div>
+          {% if section.settings.show_search_bar_mobile %}
+          <div class="visible-mobile-xs mobile-portrait-search">
+              {% render 'menu-search'%}
           </div>
-        </div>
-      </div><!-- /header -->
+          {% endif %}
 
-{% assign  logo_height_math = section.settings.logo_height | escape %}
-{% assign  navbar_padding = logo_height_math | minus: 12 | divided_by: 2 %}
-{% if navbar_padding >= 0 %}
-{% assign  navbar_padding = navbar_padding| append: 'px' %}
-{% else %}
-{% assign  navbar_padding = 0 %}
-{% endif %}
+        </div>
+      </div>
+    </div>
+
+</div><!-- /header -->
 {% assign  top_menu_padding = logo_height_math | minus: 44 | divided_by: 2 | append: 'px' %}
 {% assign  top_menu_padding_plus10 = logo_height_math | minus: 44 | divided_by: 2 | plus: 10 | append: 'px' %}
 {% assign  fixed_search_padding = logo_height_math | minus: 18 | divided_by: 2 | append: 'px' %}
@@ -66,88 +60,10 @@
 
 <style>
 
-#header #nav .navbar-nav > li > .fixed-search
-{
-{% if section.settings.logo != blank and section.settings.logo_height != blank %}
-    padding-top: {{fixed_search_padding}};
-	  padding-bottom: {{fixed_search_padding}};
-    padding-left:5px;
-	{% else %}
-	  padding-top:12px;
-	  padding-bottom:12px;
-    padding-left:5px;
-	{% endif %}
-}
-
-
-  @media (min-width: 769px) {
-    #header #nav .wsmenu > ul > li > a  {
-      {% if section.settings.logo != blank and section.settings.logo_height != blank  %}
-      padding-top: {{navbar_padding}};
-      padding-bottom: {{navbar_padding}};
-      {% else %}
-      padding-top:15px;
-      padding-bottom:15px;
-      {% endif %}
-    }
-  }
-
-
-
-#header .navbar-toggle, 
-#header .navbar-cart {
-	{% if section.settings.logo != blank and section.settings.logo_height != blank %}
-	padding-top: {{navbar_padding}};
-	padding-bottom: {{navbar_padding}};
-	{% else %}
-	padding-top:15px;
-	padding-bottom:15px;
-	{% endif %}
-}
-
 #header a.navbar-brand {
   height:auto;
 }
 
-@media (max-width: 600px) {
-	#header .navbar-toggle, 
-  #header .navbar-cart {
-		{% if section.settings.logo != blank and section.settings.logo_height != blank and section.settings.mobile_padding != blank %}
-		padding-top: {{ section.settings.mobile_padding | escape }}px;
-		padding-bottom: {{ section.settings.mobile_padding | escape }}px;
-		{% else %}
-		padding-top:15px;
-		padding-bottom:15px;
-		{% endif %}
-	}
-}
-
-@media (max-width: 900px) {
-
-  #header #nav .navbar-nav > li > a {
-    font-size: 12px;
-    line-height: 32px;
-    padding-left:7px;
-    padding-right:7px;
-  }
-
-  #header .navbar-brand {
-    font-size: 22px;
-    line-height: 20px;
-    {% if section.settings.logo != blank %}
-    padding:0 15px 0 0;
-    {% else %}
-    padding:20px 10px 15px 0;
-    {% endif %}
-  }
-
-  #header .right_menu > ul > li > a {
-    margin: 0 0 0 5px;
-  }
-  #header #nav .navbar:not(.caret-bootstrap) .navbar-nav:not(.caret-bootstrap) li:not(.caret-bootstrap) > a.dropdown-toggle:not(.caret-bootstrap) > span.caret:not(.caret-bootstrap) {
-    margin-left: 3px;
-  }
-}
 
 @media  (min-width: 769px) and (max-width: 800px) {
   #header .hed_right, #header .top_menu {
@@ -189,30 +105,6 @@ figure.effect-chico:hover img {
 	-webkit-transform: scale(1.2) !important;
 	transform: scale(1.2) !important;
 }
-
-@media (min-width: 769px)
-  {
-   #header #nav .wsmenu > ul > li > a  {
-	padding-top:15px;
-	padding-bottom:15px;
-   }
-  }
-
-  #header .nav > li:first-child > a {
-    padding-left:0;
-  }
-
-
-  .promo-bar {
-    font-size:{{ section.settings.head_promobar | append: 'px' }};
-  }
-  .promo-bar p{
-    font-size:{{ section.settings.head_promobar | append: 'px' }};
-  }
-  #header .top_menu ul li {
-    font-size:{{ section.settings.head_font_size | append: 'px'}};
-  }
-
 
 </style>
 
@@ -382,51 +274,6 @@ figure.effect-chico:hover img {
         "type": "checkbox",
         "id": "sticky_menu",
         "label": "Enable sticky menu"
-      },
-	  {
-        "type": "header",
-        "content": "Subnavigation"
-      },
-      {
-        "type": "select",
-        "id": "heading_content",
-        "label": "Choose content",
-        "options": [
-          {
-            "value": "links",
-            "label": "Links"
-          },
-          {
-            "value": "text",
-            "label": "Text"
-          },
-          {
-            "value": "none",
-            "label": "None"
-          }
-        ],
-        "default": "links"
-      },
-       {
-        "type": "range",
-        "id": "head_font_size",
-        "label": "Font size",
-        "default": 14,
-        "min": 12,
-        "max": 20,
-        "step": 1,
-        "unit": "px"
-      },
-      {
-        "type": "link_list",
-        "id": "header_top_linklist",
-        "label": "Choose menu",
-		"info": "This menu won't show dropdown items"
-      },
-      {
-        "type": "richtext",
-        "id": "header_top_text",
-        "label": "Text"
       },
       {
         "type": "text",

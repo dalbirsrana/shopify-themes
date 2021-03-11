@@ -24,7 +24,7 @@
 
           {% when 'linklist' %}
         	{% assign linklist = linklists[block.settings.linklist] %}
-            <div class="{% if blockCount == 4%} col-sm-3 col-ms-6{% elsif blockCount == 3 %}col-sm-4 col-ms-6{% elsif blockCount == 2 %}col-sm-6 col-ms-6{% else %}col-xs-12{% endif %}">
+            <div class="{% if blockCount == 4%} col-sm-3 col-ms-6{% elsif blockCount == 3 %}col-sm-3 col-ms-6{% elsif blockCount == 2 %}col-sm-6 col-ms-6{% else %}col-xs-12{% endif %}">
               <h4>{{ linklist.title | escape }}</h4>
               {% if linklist != '' %}
               <ul>
@@ -36,9 +36,9 @@
             </div>
 
           {% when 'text' %}
-        	<div class="{% if blockCount == 4%} col-sm-3 col-ms-6{% elsif blockCount == 3 %}col-sm-4 col-ms-6{% elsif blockCount == 2 %}col-sm-6 col-ms-6{% else %}col-xs-12{% endif %}">
+        	<div class="{% if blockCount == 4%} col-sm-3 col-ms-6{% elsif blockCount == 3 %}col-sm-5 col-ms-6{% elsif blockCount == 2 %}col-sm-6 col-ms-6{% else %}col-xs-12{% endif %}">
               <h4>{{ block.settings.title | escape }}</h4>
-              <div class="desc">
+              <div class="desc text">
                 {{ block.settings.text }}
               </div>
             </div>
@@ -120,7 +120,7 @@
       {%- endform -%}
 
 
-      <div class="f_bot_left">&copy; {{ 'now' | date: "%Y" }} {{ shop.name | link_to: routes.root_url }} | {{ powered_by_link }}</div>
+      <div class="f_bot_left">&copy; {{ 'now' | date: "%Y" }} {{ shop.name | link_to: routes.root_url }}</div>
       {% if section.settings.show_payment_methods and shop.enabled_payment_types != empty %}
       <div class="f_bot_right">
         <div class="partner">
