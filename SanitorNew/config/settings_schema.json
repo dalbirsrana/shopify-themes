@@ -1,11 +1,11 @@
 [
   {
     "name": "theme_info",
-    "theme_name": "ShowTime",
-    "theme_author": "Mile High Themes",
-    "theme_version": "6.4.5",
-    "theme_documentation_url": "https:\/\/support.milehighthemes.com\/hc\/en-us\/articles\/360020084974-ShowTime-theme-documentation",
-    "theme_support_url": "https:\/\/support.milehighthemes.com\/hc\/en-us\/requests\/new"
+    "theme_name": "DS2021",
+    "theme_author": "Dalbir Singh",
+    "theme_version": "0.0.1",
+    "theme_documentation_url": "https://github.com/dalbirsrana/shopify-themes",
+    "theme_support_url": "https://github.com/dalbirsrana/shopify-themes"
   },
   {
     "name": "Colors",

@@ -1,0 +1,70 @@
+<div id="content">
+  <div class="container">
+
+    {% render 'breadcrumb' %}
+    <div class="title clearfix">
+      <h1>{{ page.title | escape }}</h1>
+    </div>
+
+    <div class="contact_c">
+
+      <div class="row">
+
+        <div class="col-sm-6 bounceInLeft">
+          <div class="infor_c">        
+            <div class="rte">
+              {{ page.content }}
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="con_frm">
+          
+
+            {% form 'contact' %}
+
+            <div class="frm con_frm_inn">
+              <div class="row">
+              {% if form.posted_successfully? %}
+              <div class="alert alert-success m15">
+                {{ 'contact.form.post_success' | t }}
+              </div>
+              {% endif %}
+              <div class="m15">
+                {% render 'form-errors-custom', form: form, field: field %}
+              </div>
+
+                <div class="col-sm-6">
+
+                  <div class="lbltxt">{{ 'contact.form.name' | t }}:<span class="req">*</span></div>
+                  <input type="text" id="contactFormName" class="txtbox" name="contact[name]" autocapitalize="words" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}">
+                </div>
+                <div class="col-sm-6">
+                  <div class="lbltxt">{{ 'contact.form.email' | t }}:<span class="req">*</span></div>
+                  <input type="email" name="contact[email]" id="contactFormEmail" class="txtbox" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}">
+                </div>
+              </div>
+
+
+              <div class="lbltxt">{{ 'contact.form.message' | t }}: <span class="req">*</span></div>
+              <textarea name="contact[body]" id="contactFormMessage">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+              <div class="clearfix frm_bot">
+                <input type="submit" class="btn_c" value="{{ 'contact.form.send' | t }}">
+                <input type="reset" class="info_btn" value="{{ 'contact.form.clear' | t }}">
+                <span class="reqired">* {{ 'contact.form.required' | t }}</span>
+              </div>
+            </div>
+            {% endform %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "FAQs page"
+  }
+{% endschema %}

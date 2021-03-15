@@ -22,36 +22,37 @@
       {% else %}
       <a href="{{routes.search_url}}" class="visible-ms visible-xs pull-right navbar-cart"><div class="cart-icon"><i class="fa fa-search"></i></div></a>
       {% endif %}
-      {% if section.settings.header_style != 'header1' %}
-      <div class="visible-ms visible-xs">
-        {% endif %}
+
+
+
+      <!-- Site logo -->
+      <div>
         {% if section.settings.logo != blank %}
-
-        {% if template.name == 'index' %}
-        	<h1>
-        {% endif %}
-
+        
               <a class="navbar-brand" href="{{routes.root_url}}" style="max-width:{{section.settings.logo_max_width | plus: 15 | append: "px"}}">
                 <img src="{{ section.settings.logo | img_url: logo_scale_width }}"
                      alt="{% if  section.settings.logo.alt != blank %} {{ section.settings.logo.alt}} {% else %}{{ shop.name }} {%endif %}" />
               </a>
 
-          {% if template.name == 'index' %}
-              </h1>
-          {% endif %}
         {% else %}
+
           {% if template.name == 'index' %}
               <h1 class="h1_homepage">
           {% endif %}
-         <a class="navbar-brand text-logo" href="{{routes.root_url}}">{{ shop.name }}</a>
+              <a class="navbar-brand text-logo" href="{{routes.root_url}}">{{ shop.name }}</a>
            {% if template.name == 'index' %}
              </h1>
           {% endif %}
+
         {% endif %}
-        {% if section.settings.header_style != 'header1' %}
-      </div><!-- ./visible-ms visible-xs -->
-      {% endif %}
+        
+      </div>
+      <!-- /Site logo -->
+
     </div>
+
+
+
     <!-- code here -->
     <nav class="wsmenu clearfix multi-drop" role="navigation">
       <ul class="mobile-sub wsmenu-list mega_menu_simple_menu">

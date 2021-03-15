@@ -31,6 +31,11 @@
                 {% for link in linklist.links %}
                 <li><a href="{{ link.url }}">{{ link.title }}</a></li>
                 {% endfor %}
+
+                {% unless customer %}
+                <li><a href="{{routes.account_login_url}}">{{ 'customer.login.title' | t }}</a></li>
+                {% endunless %}
+                
               </ul>
               {% endif %}
             </div>
