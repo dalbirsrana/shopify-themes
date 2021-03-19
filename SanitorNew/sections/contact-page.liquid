@@ -98,7 +98,6 @@
       <div class="row">
         <div class="col-sm-6 bounceInLeft">
           <div class="infor_c">
-            <h5 class="box-heading">{{ 'pages.contact.heading_info_box' | t }}</h5>
             <div class="rte">
               {{ page.content }}
             </div>
@@ -106,7 +105,6 @@
         </div>
         <div class="col-sm-6">
           <div class="con_frm">
-            <h5 class="box-heading">{{ 'pages.contact.heading_contact_box' | t }}</h5>
             {% form 'contact' %}
             <div class="frm con_frm_inn">
               <div class="row">
@@ -115,7 +113,7 @@
                 {{ 'contact.form.post_success' | t }}
               </div>
               {% endif %}
-              <div class="m15">
+              <div class="col">
                 {% render 'form-errors-custom', form: form, field: field %}
               </div>
 

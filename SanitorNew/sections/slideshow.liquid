@@ -28,22 +28,34 @@
           <div class="flex-caption {{ block.settings.slideshow_caption_position}}" {% if block.settings.slideshow_caption_val != '0' %}style="background: rgba(0,0,0, {% if block.settings.slideshow_caption_val == 100%} 1 {% else %}0.{{block.settings.slideshow_caption_val}} {% endif %});"{% else %}style="background:transparent;"{% endif %}>
             <div class="banner">
               <div class="banner_overlay">
-              {% if block.settings.title != blank %}
-              <h2>{{ block.settings.title | escape }}</h2>
+
+              {% if block.settings.product_image %}
+              <div class="banner_product_image">
+                <img src="{{ block.settings.product_image | img_url: '600x' }}"
+                    class="lazyload" />
+              </div>
               {% endif %}
-              {% if block.settings.title != blank and block.settings.slideshow_subtitle != blank %}
-              <div class="line_1"></div>
-              {% endif %}
-              {% if block.settings.slideshow_subtitle != blank %}
-              <h4>{{ block.settings.slideshow_subtitle }}</h4>
-              {% endif %}
-              {% if block.settings.slideshow_subsubtitle != blank %}
-              <h5>{{ block.settings.slideshow_subsubtitle }}</h5>
-              {% endif %}
-              {% if block.settings.slideshow_link != blank and block.settings.slideshow_button_text != blank %}
-              <a class="btn_c" href="{{ block.settings.slideshow_link }}">{{ block.settings.slideshow_button_text | escape }}</a>
-              {% endif %}
-            </div>
+
+              <div class="banner_caption">
+                {% if block.settings.title != blank %}
+                <h2>{{ block.settings.title | escape }}</h2>
+                {% endif %}
+                {% if block.settings.title != blank and block.settings.slideshow_subtitle != blank %}
+                <div class="line_1"></div>
+                {% endif %}
+                {% if block.settings.slideshow_subtitle != blank %}
+                <h4>{{ block.settings.slideshow_subtitle }}</h4>
+                {% endif %}
+                {% if block.settings.slideshow_subsubtitle != blank %}
+                <h5>{{ block.settings.slideshow_subsubtitle }}</h5>
+                {% endif %}
+                {% if block.settings.slideshow_link != blank and block.settings.slideshow_button_text != blank %}
+                <a class="btn_c" href="{{ block.settings.slideshow_link }}">{{ block.settings.slideshow_button_text | escape }}</a>
+                {% endif %}
+              </div>
+
+              </div>
+
             </div>  
           </div>
           {% endif %}
@@ -206,6 +218,12 @@
         "step":       10,
         "unit":       "%",
         "default": 20
+      },
+      {
+        "type": "image_picker",
+        "id": "product_image",
+        "label": "Product Image",
+		    "info": "500px by 500px image"
       },
       {
         "type": "text",

@@ -13,6 +13,10 @@
         <div class="col-sm-6 bounceInLeft">
           <div class="infor_c">        
             <div class="rte">
+            <h4>If you do not find the answer to your question below, 
+            please fill in the form on the right and we will answer your question promptly.</h4>
+            <div class="m15">&nbsp;</div>
+
               {{ page.content }}
             </div>
           </div>
@@ -31,11 +35,9 @@
                 {{ 'contact.form.post_success' | t }}
               </div>
               {% endif %}
-              <div class="m15">
-                {% render 'form-errors-custom', form: form, field: field %}
-              </div>
-
-                <div class="col-sm-6">
+              {% render 'form-errors-custom', form: form, field: field %}
+        
+              <div class="col-sm-6">
 
                   <div class="lbltxt">{{ 'contact.form.name' | t }}:<span class="req">*</span></div>
                   <input type="text" id="contactFormName" class="txtbox" name="contact[name]" autocapitalize="words" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}">
