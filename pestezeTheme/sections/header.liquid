@@ -1,0 +1,292 @@
+<div class="promo-bar">
+  <div class="container promo-bar-content">
+    {% if section.settings.show_announcement != blank and section.settings.promo_bar_text != blank %}
+    <div class="promo-bar-text">
+      {% if section.settings.promo_bar_link != blank %}
+      <a href="{{section.settings.promo_bar_link}}">
+      {% endif %}
+      {{ section.settings.promo_bar_text }}
+      {% if section.settings.promo_bar_link != blank %}
+      </a>
+      {% endif %}
+    </div>
+    {% endif %}
+    <div class="promo-bar-phone">
+      <ul>
+        {% if section.settings.header_phone != blank %}
+        <li><a href="tel:{{ section.settings.header_phone | escape }}"><span class="fa fa-phone"></span>{{ section.settings.header_phone | escape }}</a></li>
+        {% endif %}
+        {% if section.settings.header_email != blank %}
+        <li><a href="mailto:{{ section.settings.header_email | escape }}"><span class="fa fa-envelope"></span>{{ section.settings.header_email | escape }}</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</div>
+
+{% assign logo_scale_width = section.settings.logo_max_width | times: 2 | append: 'x' %}
+
+<div id="header" data-section-id="{{ section.id }}" data-section-type="header-section">
+
+  {% comment %} {% render 'header-top' %} {% endcomment %}
+
+    <div class="header_bot {% if section.settings.sticky_menu %} enabled-sticky-menu {% endif %}">
+      <div class="header_content">
+        <div class="container">
+
+          {% if section.settings.navigation_type == 'simple' %}
+            {% render 'main-menu-simple', logo_scale_width: logo_scale_width %}
+          {% else %}
+            {% render 'main-menu', logo_scale_width: logo_scale_width %}
+          {% endif %}
+
+          {% if section.settings.show_search_bar_mobile %}
+          <div class="visible-mobile-xs mobile-portrait-search">
+              {% render 'menu-search'%}
+          </div>
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+
+</div><!-- /header -->
+{% assign  top_menu_padding = logo_height_math | minus: 44 | divided_by: 2 | append: 'px' %}
+{% assign  top_menu_padding_plus10 = logo_height_math | minus: 44 | divided_by: 2 | plus: 10 | append: 'px' %}
+{% assign  fixed_search_padding = logo_height_math | minus: 18 | divided_by: 2 | append: 'px' %}
+{% assign  logo_height = section.settings.logo_height | append: 'px'%}
+
+
+
+<style>
+
+#header a.navbar-brand {
+  height:auto;
+}
+
+
+@media  (min-width: 769px) and (max-width: 800px) {
+  #header .hed_right, #header .top_menu {
+    padding:0 !important;
+  }
+  #header .hed_right ul {
+    display:block !important;
+  }
+
+  #header .hed_right .header-contact {
+    margin-top:0 !important;
+  }
+
+  #header .top_menu {
+    float:left !important;
+  }
+}
+
+@media (max-width: 480px) {
+	#header .hed_right ul li {
+		margin: 0;
+		padding: 0 5px;
+		border: none;
+		display: inline-block;
+	}
+}
+
+.navbar:not(.no-border) .navbar-nav.dropdown-onhover>li:hover>a {
+	margin-bottom:0;
+}
+
+
+figure.effect-chico img {
+	-webkit-transform: scale(1) !important;
+	transform: scale(1) !important;
+}
+
+figure.effect-chico:hover img {
+	-webkit-transform: scale(1.2) !important;
+	transform: scale(1.2) !important;
+}
+
+</style>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": {{ shop.name | json }},
+  {% if section.settings.logo %}
+    {% assign image_size = section.settings.logo_max_width | append:'x' %}
+    "logo": {{ section.settings.logo | img_url: image_size | prepend: "https:" | json }},
+  {% endif %}
+  "sameAs": [
+    {{ settings.twitter_link | json }},
+    {{ settings.facebook_link | json }},
+    {{ settings.pinterest_link | json }},
+    {{ settings.instagram_link | json }},
+    {{ settings.tumblr_link | json }},
+    {{ settings.youtube_link | json }},
+    {{ settings.vimeo_link | json }}
+  ],
+  "url": {{ shop.url | append: page.url | json }}
+}
+</script>
+{% if template.name == 'index' %}
+  {% assign potential_action_target = shop.url | append: "/search?q={search_term_string}" %}
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "name": {{ shop.name | json }},
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {{ potential_action_target | json }},
+        "query-input": "required name=search_term_string"
+      },
+      "url": {{ shop.url | append: page.url | json }}
+    },
+  </script>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Announcement bar"
+      },
+	  {
+        "type": "checkbox",
+        "id": "show_announcement",
+        "label": "Show announcement"
+      },
+      {
+        "type": "text",
+        "id": "promo_bar_text",
+        "label": "Text"
+      },
+	  {
+        "type": "url",
+        "id": "promo_bar_link",
+        "label": "Link"
+      },
+	  {
+        "type": "range",
+        "id": "head_promobar",
+        "label": "Font size",
+        "default": 14,
+        "min": 12,
+        "max": 20,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Logo"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Image",
+        "info": "350 x 120px max"
+      },
+    	{
+      "type":      "range",
+      "id":        "logo_max_width",
+      "min":       60,
+      "max":        350,
+      "step":       10,
+      "unit":       "px",
+      "label":     "Custom logo width (in pixels)",
+      "default":   200
+      },
+      {
+        "type": "range",
+        "id": "logo_height",
+        "label": "Navigation bar height",
+        "info": "Vertically align your menu by choosing the pixel height of your logo.",
+        "min":       10,
+        "max":        150,
+        "step":       2,
+        "unit":       "px",
+        "default": 30
+      },
+      {
+      "type": "range",
+      "id": "mobile_padding",
+      "label": "Mobile nav button padding",
+      "min":       10,
+      "max":        100,
+      "step":       5,
+      "unit":       "px",
+      "default": 15,
+      "info": "Adjusts positioning of navigation icons on mobile devices. [Learn more](https:\/\/support.milehighthemes.com\/hc\/en-us/articles\/360020084294-What-do-the-navigation-bar-height-and-mobile-nav-padding-settings-do-)"
+      },
+      {
+        "type": "select",
+        "id": "search_style",
+        "label": "Search style",
+        "options": [
+          {
+            "value": "icon",
+            "label": "Icon"
+          },
+          {
+            "value": "bar",
+            "label": "Search bar"
+          }
+        ],
+        "default": "icon"
+      },
+	  {
+        "type": "checkbox",
+        "id": "show_search_bar_mobile",
+        "label": "Show search bar on mobile"
+      },
+	  {
+        "type": "header",
+        "content": "Main navigation"
+      },
+	  {
+        "type": "radio",
+        "id": "navigation_type",
+        "label": "Choose type",
+        "info": "[Learn more](https:\/\/support.milehighthemes.com\/hc\/en-us\/articles\/360020278233-Setting-up-header-and-navigation-styles)",
+        "options": [
+          {
+            "value": "simple",
+            "label": "Simple"
+          },
+          {
+            "value": "advanced",
+            "label": "Mega menu"
+          }
+        ]
+      },
+	  {
+        "type": "link_list",
+        "id": "header_main_linklist",
+        "label": "Choose menu"
+      },
+	  {
+        "type": "checkbox",
+        "id": "sticky_menu",
+        "label": "Enable sticky menu"
+      },
+      {
+        "type": "text",
+        "id": "header_phone",
+        "label": "Phone number",
+        "default": "800.555.5555"
+      },
+      {
+        "type": "text",
+        "id": "header_email",
+        "label": "Email address",
+        "default": "example@cooktime.com"
+      }
+    ]
+  }
+{% endschema %}

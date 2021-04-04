@@ -1,0 +1,27 @@
+{% comment %}
+{%- if product.selling_plan_groups.size > 0 -%}
+  {%- for selling_plan_group in product.selling_plan_groups -%}
+    <p>{{ selling_plan_group.name }}</p>
+    <ul>
+      {%- for selling_plan in selling_plan_group.selling_plans -%}
+        <li>{{ selling_plan.name }}</li>
+      {%- endfor -%}
+    </ul>
+  {%- endfor -%}
+{%- endif -%}
+
+{%- if product.selling_plan_groups.size > 0 -%}
+  <div class="product__selling-plan" data-selling-plan-container data-variant-id="{{ current_variant.id }}">
+    <label for="Plans">Purchase options:</label>
+    <select name="selling_plan" id="plans" data-selling-plan-select-input>
+      <option value="">One time purchase</option>
+      {%- for alloc in current_variant.selling_plan_allocations -%}
+        <option value="{{ alloc.selling_plan.id }}">
+          {{ alloc.selling_plan.name }}
+        </option>
+      {%- endfor -%}
+    </select>
+    <p class="product__selling-plan__description hide" data-selling-plan-description></p>
+  </div>
+{%- endif -%}
+{% endcomment %}

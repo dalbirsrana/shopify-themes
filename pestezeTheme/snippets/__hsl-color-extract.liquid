@@ -1,0 +1,8 @@
+{% comment %}
+  - color
+  - name
+{% endcomment %}
+--{{ name }}: {{ color }};
+--{{ name }}-H: {{ color | color_extract: 'hue' }};
+--{{ name }}-S: {{ color | color_extract: 'saturation' | append: '%' }};
+--{{ name }}-L: {{ color | color_extract: 'lightness' | append: '%' }};

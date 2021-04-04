@@ -299,8 +299,8 @@ h6,
 }
 
 #header .wsmenu > ul > li > a:hover {
-  color: var(--nav-parent-hover-color);
-  border-bottom: 5px solid var(--primary-color);
+  color: var(--secondary-color);
+  border-bottom: 5px solid var(--secondary-color);
 }
 
 #header .wsmenu > ul > li > a,
@@ -512,7 +512,7 @@ a.spr-summary-actions-newreview:active,
 }
 
 #footer .f_mid :is(a:hover, a:focus) {
-  color: var(--primary-color);
+  color: var(--secondary-color);
 }
 
 #footer .f_mid h4 {
@@ -2639,7 +2639,7 @@ a.spr-summary-actions-newreview,
 .cart_menu .checkout_row .checkout_btn,
 .newsletter_email_box .txtbox,
 .product_payments_btns .shopify-payment-button__button--unbranded {
-  border-radius: 8px;
+  border-radius: 30px;
 }
 
 #content .cart_c .additional-checkout,
@@ -2880,7 +2880,7 @@ h5 {
 
 #header .header_bot {
   background: var(--header-bg-color);
-  border-bottom: 1px solid #c0dae5;
+  border-bottom: 1px solid #ccc;
 }
 
 #header .navbar-brand {
@@ -3317,7 +3317,8 @@ Mega Menu
 }
 
 .wsmenu-submenu li a {
-  background-color: #e7f8ff;
+  color: var(--primary-color);
+  background-color: #ebebeb;
   border-bottom: 1px solid #cedadf;
   border-left: 1px solid #f0f0f0;
   border-right: 1px solid #cedadf;
@@ -3336,7 +3337,7 @@ Mega Menu
 
 .wsmenu-submenu > li:hover > a {
   background-color: #fbfeff;
-  border-top: 5px solid var(--primary-color);
+  border-top: 5px solid var(--secondary-color);
 }
 
 .wsmenu-submenu .has-submenu-sub > a:hover {
@@ -4834,7 +4835,7 @@ body[data-show-promo-row-2="true"] #content .h_row_3 {
 
 #content .main_box {
   border: 2px solid #eee;
-  border-bottom: 5px solid #7dc6e68f;
+  border-bottom: 5px solid var(--primary-color);
   border-radius: 0.5rem;
   padding: 0.25rem;
 }
@@ -6530,7 +6531,7 @@ span.out-of-stock {
 }
 
 #call-to-action {
-  border-top: 1px solid #c0dae5;
+  border-top: 1px solid #ccc;
 }
 
 #call-to-action .blocks-wrapper {
@@ -6653,7 +6654,7 @@ span.out-of-stock {
 }
 
 .social ul li a:hover {
-  background-color: var(--primary-color);
+  background-color: var(--secondary-color);
 }
 
 .modal-body .social ul li a {

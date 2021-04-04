@@ -1,0 +1,19 @@
+{% if section.settings.heading_content != 'none' %}
+<div class="header_top">
+  <div class="container">
+    <div class="top_menu">
+      <ul>
+        {% if section.settings.heading_content == 'links' %}
+        {% for link in linklists[section.settings.header_top_linklist].links %}
+        <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
+        {% else %}
+        <li>{{ 'general.header.no_links' | t }}</li>
+        {% endfor %}
+        {% elsif section.settings.heading_content == 'text' and section.settings.header_top_text != blank %}
+        <li><span class="header-top-text">{{ section.settings.header_top_text }}</span></li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</div>
+{% endif %}
